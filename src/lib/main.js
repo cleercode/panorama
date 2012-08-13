@@ -5,7 +5,7 @@ const addontab = require('addon-page');
 const runtime = require('runtime');
 const data = require('self').data;
 
-const currentTabs = require('current-tabs');
+const tabGroups = require('tab-groups');
 
 function detectOS() {
   switch (runtime.OS) {
@@ -41,7 +41,7 @@ exports.main = function() {
                         data.url('populator.js')],
     onAttach: function(worker) {
       worker.port.emit('os', detectOS());
-      currentTabs.get(worker);
+      tabGroups.get(worker);
     }
   });
 };
