@@ -1,16 +1,17 @@
 let Panorama = {
   MAX_GROUPS_PER_ROW: 3,
-  groups: 5,
+  groups: 0,
 
   /**
    * Initializes the Panorama UI, sizing the groups/pages and binding elements
    */
-  init: function() {
+  init: function(numGroups) {
+    this.groups = numGroups;
     this.resizeGroups();
 
     // TODO: Disable CSS animation on .group until after initial resize
 
-    let add = document.getElementById("panorama-add");
+    let add = document.getElementById("add");
     add.addEventListener("click", this.addGroup);
   },
 
@@ -36,11 +37,7 @@ let Panorama = {
    * Add a group
    */
   addGroup: function() {
-    let group = document.createElement("div");
-    group.className = "group";
-    let grid = document.getElementById("content");
-    grid.appendChild(group);
-    Panorama.groups++;
+    self.port.emit('group', {});
     Panorama.resizeGroups();
   },
 
@@ -56,13 +53,13 @@ let Panorama = {
     let s = document.styleSheets[document.styleSheets.length - 1];
     this.style.textContent = ".group { width: -moz-calc(100% / " + this.columns(this.groups) + " - 10px); height: -moz-calc(100% / " + this.rows(this.groups) + " - 10px); }";
 
-    let groupsInLastRow = this.groups % this.MAX_GROUPS_PER_ROW || this.MAX_GROUPS_PER_ROW;
     let groupEls = document.getElementsByClassName("group");
+    let groupsInLastRow = groupEls.length % this.MAX_GROUPS_PER_ROW || this.MAX_GROUPS_PER_ROW;
 
-    for (let i = 0; i < this.groups; i++) {
+    for (let i = 0; i < groupEls.length; i++) {
       let groupEl = groupEls[i];
       // this.resizePagesInGroup(groupEl);
-      if (i >= this.groups - groupsInLastRow) {
+      if (i >= groupEls.length - groupsInLastRow) {
         groupEl.style.width = "-moz-calc(100% / " + groupsInLastRow + " - 10px)";
       }
     }
@@ -84,6 +81,6 @@ let Panorama = {
   }
 }
 
-self.port.on('complete', function() {
-  Panorama.init();
+self.port.on('complete', function(numGroups) {
+  Panorama.init(numGroups);
 });

@@ -25,6 +25,6 @@ exports.get = function(worker) {
         thumb: uri.spec
       });
     });
-    worker.port.emit('complete');
+    worker.port.emit('complete', groups.length);
   });
 }
