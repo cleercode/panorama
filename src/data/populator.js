@@ -1,11 +1,11 @@
 function renderGroup(group) {
-  var html = '<div class="group" id="' + group.id + '"><div class="name"><h1>' + group.title + '</h1></div><ul class="items"></ul></div>';
+  var html = '<div class="group" id="' + group.id + '"><h1>' + group.title + '</h1><ul class="items"></ul></div>';
   var el = $(html);
   $('.groups').append(el);
 }
 
 function renderItem(item) {
-  var html = '<li><a href="' + item.location + '" target="_blank" style="background-image: url(' + item.thumb + ')"><span class="icon"></span><span class="title">' + item.title + '</span><span class="url">' + item.location + '</span><span class="edit"><span class="ui-icon">Edit</span></span></a></li>'
+  var html = '<li><a href="' + item.location + '" target="_blank" style="background-image: url(' + item.thumb + ')"><span class="title">' + item.title + '</span></a></li>'
   var el = $(html);
   if (item.icon) {
     el.find('.icon').css({ backgroundImage: "url(" + item.icon + ")" });
@@ -17,4 +17,3 @@ function renderItem(item) {
 
 self.port.on('group', renderGroup);
 self.port.on('item', renderItem);
-self.port.on('complete', bindItems);
