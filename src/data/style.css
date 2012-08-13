@@ -622,3 +622,174 @@ ul.items .edit .ui-icon {
   background: none;
   border: none;
 }
+
+
+
+
+
+* {
+  -moz-user-select: -moz-none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  -moz-appearance: dialog;
+  background-color: rgb(229,229,229);
+  background-image: url(chrome://browser/skin/newtab/noise.png),
+                    -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.2));
+  background-attachment: fixed;
+  color: -moz-DialogText;
+  font: message-box;
+}
+
+input[type=button] {
+  cursor: pointer;
+}
+
+header {
+  -moz-box-sizing: border-box;
+  background: -moz-mac-chrome-active linear-gradient(rgba(255, 255, 255, 0.43), rgba(255, 255, 255, 0));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.57);
+  min-width: 245px;
+  overflow: hidden;
+  padding: 5px 10px;
+  position: fixed;
+  width: 100%;
+}
+
+#panorama-search {
+  -moz-appearance: searchfield;
+  -moz-box-sizing: border-box;
+  float: right;
+  font-size: 11px;
+  min-width: 200px;
+  padding: 2px;
+  width: -moz-calc(100% / 3 - 7px);
+}
+
+
+#panorama-search:-moz-focusring {
+  position: relative;
+  /*box-shadow: @focusRingShadow@, @roundButtonShadow@;*/
+  box-shadow: 0 0 1px -moz-mac-focusring inset, 0 0 4px 1px -moz-mac-focusring, 0 0 1.5px 1px -moz-mac-focusring, 0 1px rgba(255, 255, 255, .4);
+}
+
+#panorama-add {
+  -moz-appearance: none;
+  background: url(chrome://browser/skin/tabbrowser/newtab.png);
+  border: none;
+  float: left;
+  margin: 2px 2px 3px 0;
+  text-align: center;
+  text-indent: -999px;
+  width: 18px;
+  height: 20px;
+}
+
+#panorama-add:hover {
+  background-position: 36px 0;
+}
+
+#panorama-add:active {
+  background-position: 18px 0;
+}
+
+
+#panorama-grid {
+  margin: 40px 5px 5px;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.panorama-group {
+  -moz-box-sizing: border-box;
+  -moz-transition: width 0.5s ease-in-out;
+  -moz-transition: height 0.5s ease-in-out;
+  background-image: -moz-linear-gradient(top, #f5f8fa, #dcebfa 50%);
+  border-radius: 3px;
+  border: 1px solid rgba(10, 31, 51, 0.35);
+  box-shadow: inset 0 1px #fff, 0 3px 5px rgba(0, 0, 0, 0.2);
+  float: left;
+  margin: 5px;
+  min-height: 100px;
+  min-width: 100px;
+  overflow: hidden;
+  padding: 10px 10px 0;
+  position: relative;
+  width: -moz-calc(100% / 3 - 10px);
+  height: -moz-calc(100% / 2- 10px);
+}
+
+.panorama-group:empty {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(0, 0, 0, 0.3);
+  box-shadow: none;
+}
+
+.panorama-group-title {
+  color: rgb(31, 54, 76);
+  margin-bottom: 3px;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.panorama-pages {
+  margin: 25px 5px 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.panorama-page {
+  -moz-box-sizing: border-box;
+  border: 1px solid rgba(8, 23, 38, 0.1);
+  float: left;
+  margin: 5px;
+  min-width: 76px;
+  min-height: 68px;
+  position: relative;
+  width: -moz-calc(100% / 3 - 10px);
+  height: -moz-calc(100% / 2 - 10px);
+}
+
+.panorama-page-title {
+  -moz-box-sizing: border-box;
+  background: rgba(250, 251, 251, 0.9);
+  bottom: 0;
+  color: rgb(31, 54, 76);
+  overflow: hidden;
+  padding: 8px;
+  position: absolute;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.panorama-page:hover {
+  border: 1px solid rgba(8, 23, 38, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.panorama-thumbnail {
+  -moz-transition: opacity 100ms ease-out 0s;
+  background-clip: padding-box;
+  background-origin: padding-box;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.panorama-page:hover .panorama-thumbnail {
+  opacity: 1;
+}
