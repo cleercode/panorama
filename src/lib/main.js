@@ -5,9 +5,7 @@ const addontab = require('addon-page');
 const runtime = require('runtime');
 const data = require('self').data;
 
-const bookmarks = require('bookmarks');
 const currentTabs = require('current-tabs');
-const history = require('history');
 
 function detectOS() {
   switch (runtime.OS) {
@@ -43,17 +41,7 @@ exports.main = function() {
                         data.url('populator.js')],
     onAttach: function(worker) {
       worker.port.emit('os', detectOS());
-
-      bookmarks.get(worker);
-      worker.port.on('bookmarks', function() {
-        bookmarks.get(worker);
-      });
-      worker.port.on('tabs', function() {
-        currentTabs.get(worker);
-      });
-      worker.port.on('history', function() {
-        history.get(worker);
-      });
+      currentTabs.get(worker);
     }
   });
 };
