@@ -1,8 +1,8 @@
 {
-    "description": "A different take on Firefox's Places Library", 
+    "description": "Experimental prototype of a new interface for Firefox Panorama",
     "author": "Chris Lee",
-    "version": "0.3",
-    "fullName": "Mozaic",
-    "id": "jid1-sxpdFqE1JoTJYA",
-    "name": "mozaic"
+    "version": "0.1",
+    "fullName": "Panorama",
+    "id": "jid1-nLhtFYBZvlTWDQ",
+    "name": "panorama"
 }

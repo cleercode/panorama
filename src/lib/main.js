@@ -21,8 +21,8 @@ exports.main = function() {
 
   var url = data.url('index.html');
   var widget = new Widget({
-    id: 'mozaic',
-    label: 'Mozaic',
+    id: 'panorama',
+    label: 'Panorama',
     contentURL: data.url('img/icon.png'),
     onClick: function(event) {
       if (tabs.activeTab.url == url) {
