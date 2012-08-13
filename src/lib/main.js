@@ -18,10 +18,11 @@ function detectOS() {
 exports.main = function() {
 
   var url = data.url('index.html');
+  var favicon = data.url('img/icon-' + detectOS() + '.png');
   var widget = new Widget({
     id: 'panorama',
     label: 'Panorama',
-    contentURL: data.url('img/icon.png'),
+    contentURL: favicon,
     onClick: function(event) {
       if (tabs.activeTab.url == url) {
         tabs.activeTab.close();
